@@ -19,6 +19,7 @@ enum ImageError: Error {
   case unknown
 }
 
+// Ref: https://www.hackingwithswift.com/books/ios-swiftui/loading-photos-from-the-users-photo-library
 struct SelectImageOne: View {
   @State var status: ImageStatus = .loading
   // @State var selectedItems: [PhotosPickerItem] = []
@@ -38,7 +39,7 @@ struct SelectImageOne: View {
 
     // PhotosPicker(selection: $selectedItems, maxSelectionCount: 5, matching: .images, preferredItemEncoding: .current, photoLibrary: .shared()) {
     PhotosPicker(selection: $selectedItem, matching: .images, preferredItemEncoding: .current, photoLibrary: .shared()) {
-      Text("Select")
+      Label("Select", systemImage: "photo")
     }
     .photosPickerAccessoryVisibility(.hidden, edges: [.bottom])
     .ignoresSafeArea()

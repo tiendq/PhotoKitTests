@@ -7,26 +7,13 @@
 
 import PhotosUI
 import SwiftUI
+import UIKit
 
-struct TransferableImage: Transferable {
-  let image: Image
-  let data: Data
-
-  static var transferRepresentation: some TransferRepresentation {
-    // Ref: https://developer.apple.com/documentation/coretransferable/datarepresentation/init(importedcontenttype:importing:)
-    DataRepresentation(importedContentType: .image) { data in
-      guard let uiImage = UIImage(data: data) else {
-        throw ImageError.notSupportedContentType
-      }
-
-      return TransferableImage(image: Image(uiImage: uiImage), data: data)
-    }
-  }
-}
-
-struct SelectImageTwo: View {
+struct SaveImageView: View {
   @State var status: ImageStatus = .loading
   @State var selectedItem: PhotosPickerItem? = nil
+  @State var imageFileUrl: URL? = nil
+  @State var imageData: Data? = nil
 
   var body: some View {
     switch status {
@@ -54,6 +41,7 @@ struct SelectImageTwo: View {
           case .success(let transferableImage):
             if let transferableImage {
               status = .success(transferableImage.image)
+              saveImage(content: transferableImage.data)
             } else {
               status = .failed(ImageError.unknown)
             }
@@ -63,9 +51,48 @@ struct SelectImageTwo: View {
         }
       }
     }
+
+    if nil != imageFileUrl {
+      if let imageData {
+        Image(uiImage: .init(data: imageData)!)
+          .resizable()
+          .scaledToFit()
+          .frame(height: 200)
+      }
+      Button("Show Image") {
+        loadImage()
+      }
+      .buttonStyle(.borderedProminent)
+    }
+  }
+
+  func saveImage(content: Data) {
+    let fileName = UUID().uuidString
+    let url = URL.documentsDirectory.appendingPathComponent("\(fileName).jpg", conformingTo: .jpeg)
+
+    imageFileUrl = url
+    print("Saving image at \(url.path())...")
+
+    /*if FileManager.default.createFile(atPath: url.path(), contents: content) {
+      print("Success")
+    } else {
+      print("Failed")
+    }*/
+
+    do {
+      try content.write(to: url, options: .atomic)
+    } catch {
+      print(error)
+    }
+  }
+
+  func loadImage() {
+    if let imageFileUrl {
+      imageData = try? Data(contentsOf: imageFileUrl)
+    }
   }
 }
 
 #Preview {
-  SelectImageTwo()
+  SaveImageView()
 }

@@ -25,8 +25,13 @@ struct PhotoKitTestsApp: App {
 
   var body: some Scene {
     WindowGroup {
-      SelectImageOne()
+      ContentView()
     }
     //.modelContainer(sharedModelContainer)
+  }
+
+  init() {
+    print("applicationSupportDirectory: \(URL.applicationSupportDirectory.path())")
+    print("documentsDirectory: \(URL.documentsDirectory.path())")
   }
 }
