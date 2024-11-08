@@ -68,7 +68,17 @@ struct SaveImageView: View {
 
   func saveImage(content: Data) {
     let fileName = UUID().uuidString
-    let url = URL.documentsDirectory.appendingPathComponent("\(fileName).jpg", conformingTo: .jpeg)
+    let directory = URL.documentsDirectory.appendingPathComponent("202412", conformingTo: .directory)
+
+    if false == FileManager.default.fileExists(atPath: directory.path()) {
+      do {
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: false)
+      } catch {
+        print(error)
+      }
+    }
+
+    let url = directory.appendingPathComponent("\(fileName).jpg", conformingTo: .jpeg)
 
     imageFileUrl = url
     print("Saving image at \(url.path())...")
