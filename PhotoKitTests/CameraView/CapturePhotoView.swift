@@ -3,9 +3,11 @@ import MijickCameraView
 
 struct CapturePhotoView: View {
   @State var manager: CameraManager = .init(
-    // hdrMode: CameraHDRMode.off, error
+    // hdrMode: CameraHDRMode.off, // error https://github.com/Mijick/CameraView/issues/68
+    resolution: .photo,
+    focusImage: UIImage(systemName: "square.dashed"), // Issue: not square https://github.com/Mijick/CameraView/issues/69
     focusImageColor: .yellow,
-    focusImageSize: 92
+    focusImageSize: 90
   )
 
   @State var isCameraPresented = false
@@ -27,18 +29,19 @@ struct CapturePhotoView: View {
     .fullScreenCover(isPresented: $isCameraPresented) {
       MCameraController(manager: manager)
         .cameraScreen {
+          // Change default camera view (with on/off options)
           // Ref: https://github.com/Mijick/CameraView/issues/33
           DefaultCameraView(cameraManager: $0, namespace: $1, closeControllerAction: $2)
             .cameraPositionButtonVisible(false)
             .flipButtonVisible(false)
             .outputTypePickerVisible(false)
         }
+        .mediaPreviewScreen(nil)
         .lockOrientation(AppDelegate.self)
         .onImageCaptured(onImageCaptured)
         .onCloseController(onCloseController)
         .afterMediaCaptured {
-          $0.returnToCameraView(false)
-            .closeCameraController(true)
+          $0.closeCameraController(true)
         }
     }
   }

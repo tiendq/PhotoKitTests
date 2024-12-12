@@ -9,11 +9,12 @@ import SwiftUI
 import SwiftData
 import MijickCameraView
 
+// Disable camera UI rotation (but not affect captured image)
+// Ref: https://github.com/Mijick/CameraView#5-optional-block-screen-rotation-for-mcameracontroller
 class AppDelegate: NSObject, MApplicationDelegate {
   static var orientationLock = UIInterfaceOrientationMask.all
   func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask { AppDelegate.orientationLock }
 }
-
 
 @main
 struct PhotoKitTestsApp: App {

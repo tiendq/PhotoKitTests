@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		9442C16B2CDDEEE400C022D1 /* MijickCameraView in Frameworks */ = {isa = PBXBuildFile; productRef = 9442C16A2CDDEEE400C022D1 /* MijickCameraView */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		94F360102CD88C6D0081F0A0 /* PhotoKitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoKitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -40,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9442C16B2CDDEEE400C022D1 /* MijickCameraView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +78,6 @@
 			);
 			name = PhotoKitTests;
 			packageProductDependencies = (
-				9442C16A2CDDEEE400C022D1 /* MijickCameraView */,
 			);
 			productName = PhotoKitTests;
 			productReference = 94F360102CD88C6D0081F0A0 /* PhotoKitTests.app */;
@@ -114,7 +108,7 @@
 			mainGroup = 94F360072CD88C6D0081F0A0;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				9442C1692CDDEEE400C022D1 /* XCRemoteSwiftPackageReference "CameraView" */,
+				941D56952D0ABD04000BABC3 /* XCRemoteSwiftPackageReference "Camera" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 94F360112CD88C6D0081F0A0 /* Products */;
@@ -356,23 +350,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9442C1692CDDEEE400C022D1 /* XCRemoteSwiftPackageReference "CameraView" */ = {
+		941D56952D0ABD04000BABC3 /* XCRemoteSwiftPackageReference "Camera" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Mijick/CameraView.git";
+			repositoryURL = "git@github.com:Mijick/Camera.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
+				branch = "patch-3.0.0";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		9442C16A2CDDEEE400C022D1 /* MijickCameraView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9442C1692CDDEEE400C022D1 /* XCRemoteSwiftPackageReference "CameraView" */;
-			productName = MijickCameraView;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 94F360082CD88C6D0081F0A0 /* Project object */;
 }
