@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		941D56982D0FC75C000BABC3 /* MijickCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 941D56972D0FC75C000BABC3 /* MijickCamera */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		94F360102CD88C6D0081F0A0 /* PhotoKitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoKitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				941D56982D0FC75C000BABC3 /* MijickCamera in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = PhotoKitTests;
 			packageProductDependencies = (
+				941D56972D0FC75C000BABC3 /* MijickCamera */,
 			);
 			productName = PhotoKitTests;
 			productReference = 94F360102CD88C6D0081F0A0 /* PhotoKitTests.app */;
@@ -108,7 +114,7 @@
 			mainGroup = 94F360072CD88C6D0081F0A0;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				941D56952D0ABD04000BABC3 /* XCRemoteSwiftPackageReference "Camera" */,
+				941D56962D0FC75C000BABC3 /* XCRemoteSwiftPackageReference "Camera" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 94F360112CD88C6D0081F0A0 /* Products */;
@@ -273,7 +279,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoKitTests/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera to take diecast model photo";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -306,7 +311,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoKitTests/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera to take diecast model photo";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -350,15 +354,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		941D56952D0ABD04000BABC3 /* XCRemoteSwiftPackageReference "Camera" */ = {
+		941D56962D0FC75C000BABC3 /* XCRemoteSwiftPackageReference "Camera" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:Mijick/Camera.git";
+			repositoryURL = "https://github.com/Mijick/Camera";
 			requirement = {
-				branch = "patch-3.0.0";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		941D56972D0FC75C000BABC3 /* MijickCamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 941D56962D0FC75C000BABC3 /* XCRemoteSwiftPackageReference "Camera" */;
+			productName = MijickCamera;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 94F360082CD88C6D0081F0A0 /* Project object */;
 }

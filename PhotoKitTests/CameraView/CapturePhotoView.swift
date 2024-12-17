@@ -1,15 +1,7 @@
 import SwiftUI
-import MijickCameraView
+import MijickCamera
 
 struct CapturePhotoView: View {
-  @State var manager: CameraManager = .init(
-    // hdrMode: CameraHDRMode.off, // error https://github.com/Mijick/CameraView/issues/68
-    resolution: .photo,
-    focusImage: UIImage(systemName: "square.dashed"), // Issue: not square https://github.com/Mijick/CameraView/issues/69
-    focusImageColor: .yellow,
-    focusImageSize: 90
-  )
-
   @State var isCameraPresented = false
   @State var capturedImage: UIImage? = nil
 
@@ -27,37 +19,37 @@ struct CapturePhotoView: View {
       }
     }
     .fullScreenCover(isPresented: $isCameraPresented) {
-      MCameraController(manager: manager)
-        .cameraScreen {
-          // Change default camera view (with on/off options)
-          // Ref: https://github.com/Mijick/CameraView/issues/33
-          DefaultCameraView(cameraManager: $0, namespace: $1, closeControllerAction: $2)
-            .cameraPositionButtonVisible(false)
-            .flipButtonVisible(false)
-            .outputTypePickerVisible(false)
+      MCamera()
+        .setCameraOutputType(.photo)
+        .setAudioAvailability(false)
+        .setResolution(.photo)
+        .setCameraHDRMode(.off)
+        .setFocusImage(UIImage(systemName: "viewfinder")!) // can config symbol for thin style?
+        .setFocusImageColor(.yellow)
+        .setFocusImageSize(90)
+        .setCameraScreen {
+          DefaultCameraScreen(cameraManager: $0, namespace: $1, closeMCameraAction: $2)
+            .cameraOutputSwitchAllowed(false)
+            .cameraPositionButtonAllowed(false)
         }
-        .mediaPreviewScreen(nil)
-        .lockOrientation(AppDelegate.self)
+        .setCapturedMediaScreen(nil)
+        .setCloseMCameraAction(onCloseCamera)
+        .lockCameraInPortraitOrientation(AppDelegate.self)
         .onImageCaptured(onImageCaptured)
-        .onCloseController(onCloseController)
-        .afterMediaCaptured {
-          $0.closeCameraController(true)
-        }
+        .startSession()
     }
   }
 }
 
 extension CapturePhotoView {
-  func onImageCaptured(_ image: UIImage) {
+  func onImageCaptured(image: UIImage, controller: MCamera.Controller) {
     print("Captured an image")
     capturedImage = image
+    controller.closeMCamera() // will call onCloseCamera
   }
 
-  func onCloseController() {
-    isCameraPresented = false
-  }
-
-  func afterMediaCaptured() {
+  func onCloseCamera() {
+    print("Closed camera")
     isCameraPresented = false
   }
 }
