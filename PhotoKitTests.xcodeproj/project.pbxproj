@@ -15,7 +15,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		9442C16E2CDDF20E00C022D1 /* Exceptions for "PhotoKitTests" folder in "PhotoKitTests" target */ = {
+		94CDDF852D122BB4009A0969 /* Exceptions for "PhotoKitTests" folder in "PhotoKitTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -25,10 +25,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		94F360122CD88C6D0081F0A0 /* PhotoKitTests */ = {
+		94CDDF7B2D122BB4009A0969 /* PhotoKitTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				9442C16E2CDDF20E00C022D1 /* Exceptions for "PhotoKitTests" folder in "PhotoKitTests" target */,
+				94CDDF852D122BB4009A0969 /* Exceptions for "PhotoKitTests" folder in "PhotoKitTests" target */,
 			);
 			path = PhotoKitTests;
 			sourceTree = "<group>";
@@ -50,7 +50,7 @@
 		94F360072CD88C6D0081F0A0 = {
 			isa = PBXGroup;
 			children = (
-				94F360122CD88C6D0081F0A0 /* PhotoKitTests */,
+				94CDDF7B2D122BB4009A0969 /* PhotoKitTests */,
 				94F360112CD88C6D0081F0A0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,7 +79,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				94F360122CD88C6D0081F0A0 /* PhotoKitTests */,
+				94CDDF7B2D122BB4009A0969 /* PhotoKitTests */,
 			);
 			name = PhotoKitTests;
 			packageProductDependencies = (
