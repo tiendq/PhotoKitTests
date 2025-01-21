@@ -24,9 +24,10 @@ struct CapturePhotoView: View {
         .setAudioAvailability(false)
         .setResolution(.photo)
         .setCameraHDRMode(.off)
-        .setFocusImage(UIImage(systemName: "viewfinder")!) // can config symbol for thin style?
+        // .setFocusImage(UIImage(systemName: "viewfinder")!) // can config symbol for thin style?
+        .setFocusImage(UIImage(named: "Viewfinder")!)
         .setFocusImageColor(.yellow)
-        .setFocusImageSize(90)
+        .setFocusImageSize(80)
         .setCameraScreen {
           DefaultCameraScreen(cameraManager: $0, namespace: $1, closeMCameraAction: $2)
             .cameraOutputSwitchAllowed(false)
